@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Wix xmlns="http://schemas.microsoft.com/wix/2006/wi">
+	<Product Id="*" Name="HelloWorldWix" Language="1033" Version="1.0.0.0" Manufacturer="/f" UpgradeCode="256b9b36-2492-4729-a670-25f9ed09044d">
+		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine" />
+
+		<MajorUpgrade DowngradeErrorMessage="A newer version of [ProductName] is already installed." />
+		<MediaTemplate />
+
+		<Feature Id="ProductFeature" Title="HelloWorldWix" Level="1">
+			<ComponentGroupRef Id="ProductComponents" />
+		</Feature>
+	</Product>
+
+	<Fragment>
+		<Directory Id="TARGETDIR" Name="SourceDir">
+			<Directory Id="ProgramFilesFolder">
+				<Directory Id="INSTALLFOLDER" Name="HelloWorldWix" />
+			</Directory>
+		</Directory>
+	</Fragment>
+
+	<Fragment>
+		<ComponentGroup Id="ProductComponents" Directory="INSTALLFOLDER">
+			 <Component Id="HelloWorldFile" Guid="8d5a91e1-b1e7-41f9-b080-67abcea7e16c">
+                <File Source="HelloWorld.txt" />
+            </Component>
+		</ComponentGroup>
+	</Fragment>
+</Wix>
